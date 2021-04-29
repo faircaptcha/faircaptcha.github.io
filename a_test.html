@@ -27,7 +27,8 @@
         <div>
             <p> appel de la page </p>
         </div>
-        <div id="fairCaptcha" style="padding: 10%;">
+        <input id="token" class="d-none" type="text">
+        <div id="faircaptcha" style="padding: 10%;">
         </div>
     </body>
 
@@ -37,7 +38,7 @@
     $.ajax('http://127.0.0.1:8000/captcha/getStart/?client_key=inlOpgbwgZ108OX',{
         type: "GET",
         success: function(response) {
-        $("#fairCaptcha").append(response);    
+        $("#faircaptcha").append(response);    
     }}); 
     });
 </script>
