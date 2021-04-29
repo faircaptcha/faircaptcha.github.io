@@ -161,7 +161,7 @@ $(document).ready(function () {
     browser = new Array()
     if(!localStorage.getItem("cookie"))
     {
-        $.ajax('http://127.0.0.1:8000/captcha/getCookie/', {
+        $.ajax('https://faircaptcha.herokuapp.com/captcha/getCookie/', {
             type: 'POST',
             data: { 
                 data : data,
@@ -289,7 +289,7 @@ $(document).ready(function () {
         scrollAndBehavior["scroll"] = JSON.stringify(scrollTable);
         data["behavior"] = JSON.stringify(scrollAndBehavior)
     }
-    $.ajax('http://127.0.0.1:8000/captcha/getFirstScore/', {
+    $.ajax('https://faircaptcha.herokuapp.com/captcha/getFirstScore/', {
             type: 'POST',
             data: { 
                 data : data,
@@ -301,7 +301,7 @@ $(document).ready(function () {
             console.log(data)
             if(!data["score"])
             {
-                $.ajax('http://127.0.0.1:8000/captcha/clientSite/?type=audio',{
+                $.ajax('https://faircaptcha.herokuapp.com/captcha/clientSite/?type=audio',{
                 type: "GET",
                 data : {
                 token : $("#token").val(),
@@ -325,7 +325,7 @@ $(document).ready(function () {
 
 if('{{data.signaux.cookie}}')
     {
-        $.ajax('http://127.0.0.1:8000/captcha/getCookieData/', {
+        $.ajax('https://faircaptcha.herokuapp.com/captcha/getCookieData/', {
             type: 'POST',
             data: { 
                 data : localStorage.getItem("browser"),
@@ -346,7 +346,7 @@ $("#changeCaptcha").click(
     {
         isCaptchaAudio = !isCaptchaAudio
         type = isCaptchaAudio?"audio":"image"
-        $.ajax('http://127.0.0.1:8000/captcha/clientSite/?type='+type,{
+        $.ajax('https://faircaptcha.herokuapp.com/captcha/clientSite/?type='+type,{
                 type: "GET",
                 data : {
                 token : $("#token").val(),
