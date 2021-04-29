@@ -13,13 +13,13 @@ $(document).ready(function () {
     $.get("http://ipinfo.io", function(response) {
         addressIpAndMetaData = response;
         console.log(response)
-    }, "jsonp");
+    }, "jsonp"); 
 })
 </script>
 {% endif %}
 {% if data.signaux.device%}
 <script>
-    var  deviceCaracteristic ;
+   var deviceCaracteristic = {} ;
     $(document).ready(function () {
             agent = {browser:{name:null,version:null,v:null,userAgent:null,app:null,os:null},mobile:false,pointlock:false};
             var nVer = navigator.appVersion;
@@ -273,14 +273,14 @@ $(document).ready(function () {
         if(this.checked) {
         $(".custom-checkbox").css("display","none");
         $("#load").css("display","block");     
-    if ('{{data.signaux.request }}') {
+    if ('{{data.signaux.request }}'=='True') {
         data["request"] = JSON.stringify(addressIpAndMetaData);
     }
-    if('{{data.signaux.device}}')
+    if('{{data.signaux.device}}'=='True')
     {
         data["device"] = JSON.stringify(deviceCaracteristic)
     }
-    if('{{data.signaux.behavior}}')
+    if('{{data.signaux.behavior}}'=='True')
     {
         scrollAndBehavior = {}
         scrollAndBehavior["positions"] = JSON.stringify(positions);
@@ -323,7 +323,7 @@ $(document).ready(function () {
         }});
 };
 
-if('{{data.signaux.cookie}}')
+if('{{data.signaux.cookie}}'=='True')
     {
         $.ajax('https://faircaptcha.herokuapp.com/captcha/getCookieData/', {
             type: 'POST',

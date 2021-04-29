@@ -249,10 +249,13 @@ $(document).ready(function () {
           </div>
         </div>
         
-        <!-- <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>  -->
+        <!-- <a class="btn btn-primary btn-lg"  href="#">Call to Action &raquo;</a>  -->
       </div>
       <div class="col-md-4 mb-5">
-        <h2 id="demo">Demo</h2>
+        <div class="row" style="justify-content: space-around;">
+            <h2 id="demo">Demo </h2>
+            <a class="btn btn-primary btn-lg" id="Relaunch">Relaunch</a>
+        </div>
         <hr>
         <div class="d-flex justify-content-center">
           <input id="token" class="d-none" type="text">
@@ -281,7 +284,18 @@ $(document).ready(function () {
         success: function(response) {
         $("#faircaptcha").append(response);    
     }}); 
-    });  
+    }); 
+    
+    $('#Relaunch').click(
+    (event)=>
+    {
+        event.preventDefault();
+        $.ajax('https://faircaptcha.herokuapp.com/captcha/getStart/?client_key=m3ME5XfIMEKaPZ3',{
+        type: "GET",
+        success: function(response) {
+        $("#faircaptcha").replaceWith(response);    
+    }});
+    })
   </script>
   <script type="text/javascript">
     var key_display = document.getElementById("key_display");
